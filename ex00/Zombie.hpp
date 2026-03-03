@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: strieste <strieste@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/02 12:55:48 by strieste          #+#    #+#             */
-/*   Updated: 2026/03/02 15:28:08 by strieste         ###   ########.fr       */
+/*   Created: 2026/02/09 09:56:58 by strieste          #+#    #+#             */
+/*   Updated: 2026/03/02 12:47:59 by strieste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef ZOMBIE_HPP
+# define ZOMBIE_HPP
 
-Zombie::Zombie() : _name("Paul") {}
+# include <iostream>
+# include <string>
 
-Zombie::Zombie(std::string name) : _name(name) {}
-
-void	Zombie::nameIt(std::string name)
+class Zombie
 {
-	this->_name = name;
-}
+	public:
+		Zombie(std::string name);
+		~Zombie();
+		void	announce(void);
+	private:
+		std::string	_name;
+};
 
-Zombie::~Zombie()
-{
-	std::cout << this->_name << ": Destructor called" << std::endl;
-}
+void	randomChump(std::string name);
+Zombie*	newZombie(std::string name);
 
-void	Zombie::announce(void)
-{
-	std::cout << this->_name << ": BraiiiiiiinnnzzzZ..." << std::endl;
-}
+#endif

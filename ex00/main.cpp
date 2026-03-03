@@ -5,44 +5,27 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: strieste <strieste@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/02 12:54:52 by strieste          #+#    #+#             */
-/*   Updated: 2026/03/02 15:27:07 by strieste         ###   ########.fr       */
+/*   Created: 2026/02/09 09:56:37 by strieste          #+#    #+#             */
+/*   Updated: 2026/03/03 11:12:42 by strieste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+# include "Zombie.hpp"
 
-int	main(int ac, char **av)
+int	main(void)
 {
-	Zombie*		horde;
-	std::string	name;
-	int			N;
+	Zombie	*ptr;
 	
-	if (ac > 3)
-		return (1);
-	if (ac > 1)
-	{
-		N = atoi(av[1]);
-		if (N < 0)
-		{
-			std::cout << "Invalide number of Zombie" << std::endl;
-			return (1);
-		}
-		if (N == 0)
-			return (std::cout << "No Zombie here" << std::endl, 0);
-		if (ac == 3)
-			name = av[2];
-		else
-		name = "Bertranddddd";
-	}
-	else
-	{
-		N = 6;
-		name = "Sofie";
-	}
-	horde = zombieHorde(N, name);
-	for (int i = 0; i < N; i++)
-		horde[i].announce();
-	delete[] horde;
+	ptr = newZombie("Pedro");
+	ptr->announce();
+	std::cout << std::endl;
+	randomChump("Bernard");
+	std::cout << std::endl;
+	Zombie("Louis").announce();
+	std::cout << std::endl;
+	Zombie("Bertrand").announce();
+	std::cout << std::endl;
+	ptr->announce();
+	delete(ptr);
 	return (0);
 }

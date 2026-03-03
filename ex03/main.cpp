@@ -5,44 +5,33 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: strieste <strieste@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/02 12:54:52 by strieste          #+#    #+#             */
-/*   Updated: 2026/03/02 15:27:07 by strieste         ###   ########.fr       */
+/*   Created: 2026/03/03 08:36:28 by strieste          #+#    #+#             */
+/*   Updated: 2026/03/03 11:39:52 by strieste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "Weapon.hpp"
+#include "HumanA.hpp"
+#include "HumanB.hpp"
 
-int	main(int ac, char **av)
+int main()
 {
-	Zombie*		horde;
-	std::string	name;
-	int			N;
-	
-	if (ac > 3)
-		return (1);
-	if (ac > 1)
 	{
-		N = atoi(av[1]);
-		if (N < 0)
-		{
-			std::cout << "Invalide number of Zombie" << std::endl;
-			return (1);
-		}
-		if (N == 0)
-			return (std::cout << "No Zombie here" << std::endl, 0);
-		if (ac == 3)
-			name = av[2];
-		else
-		name = "Bertranddddd";
+		Weapon club = Weapon("crude spiked club");
+		
+		HumanA bob("Bob", club);
+		bob.attack();
+		club.setType("some other type of club");
+		bob.attack();
 	}
-	else
 	{
-		N = 6;
-		name = "Sofie";
+		Weapon club = Weapon("crude spiked club");
+		
+		HumanB jim("Jim");
+		jim.setWeapon(club);
+		jim.attack();
+		club.setType("some other type of club");
+		jim.attack();
 	}
-	horde = zombieHorde(N, name);
-	for (int i = 0; i < N; i++)
-		horde[i].announce();
-	delete[] horde;
-	return (0);
+	return 0;
 }
