@@ -6,7 +6,7 @@
 /*   By: strieste <strieste@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 12:39:49 by strieste          #+#    #+#             */
-/*   Updated: 2026/03/04 13:50:38 by strieste         ###   ########.fr       */
+/*   Updated: 2026/03/04 18:14:38 by strieste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <iostream>
 #include <string>
+#include <new>
 
 class Harl
 {

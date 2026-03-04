@@ -6,7 +6,7 @@
 /*   By: strieste <strieste@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 12:40:15 by strieste          #+#    #+#             */
-/*   Updated: 2026/03/04 15:36:27 by strieste         ###   ########.fr       */
+/*   Updated: 2026/03/04 19:08:09 by strieste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ Harl::~Harl()
 
 void	Harl::info(void)
 {
-	std::cout << "I cannot believe adding extra bacon costs more money. ";
-	std::cout << "You didn\\’t put enough bacon in my burger! ";
-	std::cout << "If you did, I wouldn\\’t be asking for more!" << std::endl;
+	std::cout << "I cannot believe adding extra bacon costs more money. "
+	<< "You didn’t put enough bacon in my burger! "
+	<< "If you did, I wouldn’t be asking for more!" << std::endl;
 	return ;
 }
 
@@ -40,21 +40,38 @@ void	Harl::error(void)
 
 void	Harl::debug(void)
 {
-	std::cout << "I love having extra bacon for my ";
-	std::cout << "7XL-double-cheese-triple-pickle-special-ketchup burger. I really do!" << std::endl;
+	std::cout << "I love having extra bacon for my "
+	<< "7XL-double-cheese-triple-pickle-special-ketchup burger. I really do!" << std::endl;
 	return ;
 }
 
 void	Harl::warning(void)
 {
-	std::cout << "I think I deserve to have some extra bacon for free. ";
-	std::cout << "I\\’ve been coming foryears, whereas you started working here just last month." << std::endl;
+	std::cout << "I think I deserve to have some extra bacon for free. "
+	<< "I\\’ve been coming foryears, whereas you started working here just last month." << std::endl;
 	return ;
 }
 
 void	Harl::complain(std::string level)
 {
-	unsigned long int	array[5];
+	void	(Harl:: *nameTab[4]) (void);
+	std::array<std::string, 4> tab;
+
+	nameTab[0] = &Harl::debug;
+	nameTab[1] = &Harl::info;
+	nameTab[2] = &Harl::warning;
+	nameTab[3] = &Harl::error;
 	
-	void	(*array[0])()
+	tab[0] = "debug";
+	tab[1] = "info";
+	tab[2] = "warning";
+	tab[3] = "error";
+	for (int i = 0; i < 4; i++)
+	{
+		if (level.compare(tab[i]) == 0)
+		{
+			(this->*nameTab[i])();
+			return ;
+		}
+	}
 }
