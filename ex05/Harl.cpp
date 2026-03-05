@@ -6,7 +6,7 @@
 /*   By: strieste <strieste@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 12:40:15 by strieste          #+#    #+#             */
-/*   Updated: 2026/03/04 19:08:09 by strieste         ###   ########.fr       */
+/*   Updated: 2026/03/05 08:23:41 by strieste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,14 @@
 Harl::Harl()
 {
 	std::cout << "Constructor Harl class called" << std::endl;
+	nameTab[0] = &Harl::debug;
+	nameTab[1] = &Harl::info;
+	nameTab[2] = &Harl::warning;
+	nameTab[3] = &Harl::error;
+	tab[0] = "DEBUG";
+	tab[1] = "INFO";
+	tab[2] = "WARNING";
+	tab[3] = "ERROR";
 	return ;
 }
 
@@ -54,18 +62,6 @@ void	Harl::warning(void)
 
 void	Harl::complain(std::string level)
 {
-	void	(Harl:: *nameTab[4]) (void);
-	std::array<std::string, 4> tab;
-
-	nameTab[0] = &Harl::debug;
-	nameTab[1] = &Harl::info;
-	nameTab[2] = &Harl::warning;
-	nameTab[3] = &Harl::error;
-	
-	tab[0] = "debug";
-	tab[1] = "info";
-	tab[2] = "warning";
-	tab[3] = "error";
 	for (int i = 0; i < 4; i++)
 	{
 		if (level.compare(tab[i]) == 0)
